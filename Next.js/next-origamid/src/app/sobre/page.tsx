@@ -11,6 +11,9 @@ export default function SobrePage() {
     <main>
       <h1>Sobre</h1>
       <p>Essa é a página Sobre</p>
+      <h2 id="teste" style={{ margin: '1600px 0' }}>
+        Teste
+      </h2>
     </main>
   )
 }
