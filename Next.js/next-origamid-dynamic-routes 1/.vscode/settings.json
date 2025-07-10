@@ -1,0 +1,16 @@
+{
+  "git.enabled": false,
+  // Quando abrimos o projeto, não queremos ver os arquivos de configuração do Next.js. Mas tem que abrir a pasta origamid no vscode para com que o vscode entenda essas configurações do .vscode
+  "files.exclude": {
+    "node_modules": true,
+    ".vscode": true,
+    ".gitignore": true,
+    "package.json": true,
+    "package-lock.json": true,
+    ".eslintrc*": true,
+    "tsconfig.*": true,
+    "next-env.d.ts": true,
+    "next.config.mjs": true,
+    "README.md": true
+  }
+}
