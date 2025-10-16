@@ -1,0 +1,12 @@
+.cursos {
+  background: #ddd;
+  border: 1px solid #333;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.titulo{
+  font-family: var(--font-externa);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

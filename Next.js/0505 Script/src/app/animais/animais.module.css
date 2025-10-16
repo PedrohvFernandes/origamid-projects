@@ -1,0 +1,12 @@
+.animais {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2rem;
+}
+
+/* Dessa forma, abaixo de 600px ele forma uma coluna de imagens de animais */
+@media (max-width: 600px) {
+  .animais {
+    grid-template-columns: 1fr;
+  }
+}
