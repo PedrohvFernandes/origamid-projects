@@ -1,0 +1,42 @@
+'use server'
+
+import { PHOTO_POST } from '@/functions/api'
+import apiError from '@/functions/api-error'
+import { stateProps } from '@/types/action'
+import { revalidateTag } from 'next/cache'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
+
+export async function photoPost(state: stateProps, formData: FormData) {
+  const token = (await cookies()).get('token')?.value
+  const nome = formData.get('nome')?.toString() as string | null
+  const idade = formData.get('idade')?.toString() as string | null
+  const peso = formData.get('peso')?.toString() as string | null
+  const img = formData.get('img') as File
+
+  try {
+    if (!token || !nome || !peso || !idade || img.size === 0) {
+      throw new Error('Preencha os dados')
+    }
+
+    const { url } = PHOTO_POST()
+
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+      body: formData,
+    })
+
+    if (!response.ok) {
+      throw new Error('Erro ao enviar foto')
+    }
+
+    // return { ok: true, error: '', data: null }
+  } catch (e: unknown) {
+    return apiError(e)
+  }
+  revalidateTag('photos')
+  redirect('/conta')
+}

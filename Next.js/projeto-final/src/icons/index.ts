@@ -1,0 +1,5 @@
+export { AdicionarIcon } from './adicionar-icon'
+export { EstatisticasIcon } from './estatisticas-icon'
+export { EnviarIcon } from './enviar-icon'
+export { FeedIcon } from './feed-icon'
+export { SairIcon } from './sair-icon'
