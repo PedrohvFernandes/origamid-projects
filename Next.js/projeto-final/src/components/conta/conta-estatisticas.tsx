@@ -4,6 +4,7 @@ import React from 'react'
 import styles from './conta-estatisitcas.module.css'
 import { VictoryPie, VictoryChart, VictoryBar } from 'victory'
 import { StatusData } from '@/actions/stats-get'
+import dynamic from 'next/dynamic'
 
 type GraphData = {
   x: string
@@ -59,3 +60,12 @@ export default function ContaEstatisticas({ data }: { data: StatusData[] }) {
     </section>
   )
 }
+
+// Lazy load so para carregar no client side, ou seja, não tenta renderizar no servidor, somente quando o cliente carregar a página
+export const ContaEstatisticasClient = dynamic(
+  () => import('@/components/conta/conta-estatisticas'),
+  {
+    loading: () => <p>Carregando estatísticas...</p>,
+    ssr: false,
+  },
+)

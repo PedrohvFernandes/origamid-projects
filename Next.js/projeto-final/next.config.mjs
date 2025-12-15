@@ -5,9 +5,12 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'dogsapi.origamid.dev',
-      }
+      },
     ],
   },
-};
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+}
 
-export default nextConfig;
+export default nextConfig

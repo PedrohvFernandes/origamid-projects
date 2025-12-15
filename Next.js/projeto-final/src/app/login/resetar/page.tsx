@@ -12,11 +12,12 @@ export type ResetPageProps = {
 }
 
 type ResetSearchParams = {
-  searchParams: ResetPageProps
+  searchParams: Promise<{ resetPageProps: ResetPageProps }>
 }
 
 export default async function ResetPage({ searchParams }: ResetSearchParams) {
-  const { keyToken, login } = searchParams
+  const { resetPageProps } = await searchParams
+  const { keyToken, login } = resetPageProps
   return (
     <div className="animeLeft">
       <h1 className="title">Resete a Senha</h1>

@@ -1,15 +1,15 @@
 import statsGet from '@/actions/stats-get'
+import { ContaEstatisticasClient } from '@/components/conta/conta-estatisticas'
 import { Metadata } from 'next'
-import dynamic from 'next/dynamic'
 
-// Lazy load so para carregar no client side, ou seja, não tenta renderizar no servidor, somente quando o cliente carregar a página
-const ContaEstatisticas = dynamic(
-  () => import('@/components/conta/conta-estatisticas'),
-  {
-    loading: () => <p>Carregando estatísticas...</p>,
-    ssr: false,
-  },
-)
+// // Lazy load so para carregar no client side, ou seja, não tenta renderizar no servidor, somente quando o cliente carregar a página
+// const ContaEstatisticas = dynamic(
+//   () => import('@/components/conta/conta-estatisticas'),
+//   {
+//     loading: () => <p>Carregando estatísticas...</p>,
+//     ssr: false,
+//   },
+// )
 
 export const metadata: Metadata = {
   title: 'Estatísticas | Minha Conta',
@@ -21,7 +21,7 @@ export default async function EstatisticasPage() {
   if (!data) return null
   return (
     <section>
-      <ContaEstatisticas data={data} />
+      <ContaEstatisticasClient data={data} />
     </section>
   )
 }
